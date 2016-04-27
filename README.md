@@ -16,6 +16,7 @@ You can find video tutorials here
 * <a href="http://forum.framework7.io/">Framework7 Forums</a>
 * <a href="http://youtube.com/c/braintemorg">Subscribe to me on youtube</a>, leave a comment on my discussion board and videos, I'll reply.
 * Signup and follow frameworks7 Series on <a href="http://braintem.org">Braintem</a>, leave your questions in the comments
+
 ##how to thank me
 * You can <a href="https://www.patreon.com/user?u=3137001">Donate here</a>
 * Follow me on social media <a href="http://instagram.com/daveozoalor">Instagram</a> , <a href="http://facebook.com/braintem">Facebook</a>, <a href="http://twitter.com/braintem">Twitter</a> 
