@@ -96,7 +96,7 @@
               <!-- messagebar -->
 				  <div class="toolbar messagebar theme-white" style="border: 1px solid #c0c2c0;">
 				    <div class="toolbar-inner">
-				      <textarea placeholder="Message" id='messageInput'></textarea><a href="#" class="link">Send</a>
+				      <textarea placeholder="Message" id='messageInput'></textarea><a href="#" class="link theme-green" id="sendMessageButton">Send</a>
 				    </div>
 				  </div>
 				  <!-- messages-content -->
@@ -114,6 +114,8 @@
 			
 			
 			    <div class="messages">
+			    <ul class="message-list">
+			    
 			      <!-- Date stamp -->
 			      <div class="messages-date">Sunday, Feb 9 <span>12:58</span></div>
 			 
@@ -151,6 +153,8 @@
 			        <!-- Message label -->
 			        <div class="message-label">Delivered 2 days ago</div>
 			      </div>
+			      	
+			    </ul>
 			    </div>
 			  </div>
             
@@ -161,28 +165,34 @@
 
 			<!-- CHAT JAVACRIPT -->
 			<script>
+			
+			var scrolled = 0;
 			  // CREATE A REFERENCE TO FIREBASE
 			  var messagesRef = new Firebase('https://doctordial.firebaseio.com/');
 
 			  // REGISTER DOM ELEMENTS
 			  var messageField = $('#messageInput');
 			  var nameField = $('#nameInput');
-			  var messageList = $('.messages');
+			  var messageList = $('.message-list');
+			  var sendMessageButton = $('#sendMessageButton');
 
 			  // LISTEN FOR KEYPRESS EVENT
-			  messageField.click(function (e) {
+			  sendMessageButton.click(function (e) {
 			      //FIELD VALUES
 			      var username = nameField.val();
 			      var message = messageField.val();
-
+                  messageField.val('');
 			      if(message != ''){
 			      	 
 			      //SAVE DATA TO FIREBASE AND EMPTY FIELD
 			      messagesRef.push({name:username, text:message});
-			      messageField.val('');
+			      
 			      }
 			     
-			    
+			    scrolled=scrolled-300;
+			        $(".message-list").animate({
+			          scrollTop:  scrolled
+			     });
 			  });
 
 			  // Add a callback that is triggered for each chat message.
@@ -193,7 +203,7 @@
 			    var message = data.text;
 
 			    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-			    var messageElement = $$('<div class="message-text">');
+			    var messageElement = $$('<li>');
 			    var nameElement = $$("<strong class='example-chat-username'></strong>");
 			    nameElement.text(username+" ");
 			    messageElement.text(message).prepend(nameElement);
@@ -203,6 +213,7 @@
 
 			    //SCROLL TO BOTTOM OF MESSAGE LIST
 			    messageList[0].scrollTop = messageList[0].scrollHeight;
+			   
 			  });
 			</script>
             </div>
